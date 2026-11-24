@@ -1,0 +1,25 @@
+# 依赖与本地文件，一概不进库
+node_modules/
+.pnpm-debug.log*
+npm-debug.log*
+
+# 运行时缓存（插件会写到 ~/.dsh/dsh-plugin-radar，万一落到这里也不提交）
+*.log
+cache.json
+notes.json
+state.json
+finds.json
+cases.json
+case-chats.json
+case-gists.json
+costs.json
+repo-cache/
+
+# 备份 / 临时
+_backup/
+_probe/
+*.bak
+*.bak-*
+*.tgz
+.DS_Store
+Thumbs.db

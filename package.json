@@ -1,0 +1,48 @@
+{
+  "name": "dsh-radar-workbench",
+  "version": "0.8.0",
+  "private": false,
+  "description": "DSH 插件雷达工作台：对话顶部一个页签，技能/插件 x 最新/热门/好玩，真数据、白话建议、一键装、英文条目可让 AI 读 README 写三句中文并显示这次花了多少 token/钱；案例页可就地聊，并能「拉它源码」读真代码回答；「收藏夹」一键出报告（逐条查资料+跟本机已装的比，结论写在每条下面）；「我装的」列出本机插件与技能；「帮我找」一句话（如「帮我找做小游戏的插件或技能」）→ AI 翻成中英搜索词 → 真去插件商店和 GitHub 搜 → 出卡片并可直接装；大白话可由 AI 翻成关键词参与雷达页排序。",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./client": {
+      "default": "./lib/client.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-runtime",
+        "@deepseek-ai/dsh-client-ui-slots"
+      ],
+      "external": [
+        "@deepseek-ai/dsh-client-runtime/client"
+      ],
+      "platform": "web",
+      "immediately": true
+    }
+  },
+  "files": [
+    "lib",
+    "lib/client.js",
+    "cordis.patch.yml",
+    "README.md",
+    "_维护.md",
+    "test"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT",
+  "scripts": {
+    "test": "node test/radar.test.mjs && node test/client.test.mjs && node test/routes.test.mjs"
+  }
+}
