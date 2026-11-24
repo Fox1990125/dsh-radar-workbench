@@ -433,5 +433,9 @@ const dlgAll = render(Object.assign({}, chatsBase, { 41: { title: '清空全部�
 ok('全清走的也是同一个确认框', textOf(dlgAll.tree).indexOf('清空全部聊天记录？') >= 0)
 ok('删除请求走 DELETE 方法，不是拿 POST 假装', /api\("\/case-chat",[\s\S]{0,120}?"DELETE"\)/.test(src), src.match(/api\("\/case-chat"[\s\S]{0,140}/))
 
+// 切页签会整块重新挂载，state 只读回四个字段的话，已出的报告和已读标记会显示成空
+ok('重新加载时把 reports 一起读回来（否则切回来报告就没了）', /reports:\s*s\.reports/.test(src), src.match(/setSt\(\{[\s\S]{0,400}/))
+ok('readCases 也一起读回来（否则已读变暗会失效）', /readCases:\s*s\.readCases/.test(src))
+
 console.log('\n结果：' + pass + ' 通过 / ' + fail + ' 失败')
 process.exit(fail ? 1 : 0)
