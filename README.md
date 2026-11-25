@@ -37,6 +37,14 @@ DSH 的插件生态散在两个地方：插件在 npm，技能在 GitHub。名�
 
 需要 DSH 桌面端（本仓库按 0.2.x 内核验证）。
 
+**方式一：下载安装包，不用敲命令**
+
+[下载 dsh-radar-workbench-0.8.2.tgz](https://github.com/Fox1990125/dsh-radar-workbench/releases/download/v0.8.2/dsh-radar-workbench-0.8.2.tgz)（1.3 MB，sha256 `466e84af…d81d`）。
+
+然后在 DSH 里：**插件 → 添加插件 → 选这个文件**。
+
+**方式二：命令行**
+
 ```bash
 # 从本仓库目录装（link 方式，改代码立即生效）
 dsh plugin --profile desktop add "<本仓库绝对路径>"
@@ -69,7 +77,7 @@ dsh plugin --profile desktop remove dsh-plugin-radar
 ## 自测
 
 ```bash
-npm test          # 218 项：逻辑 / 渲染 / 接口 / 限流
+npm test          # 222 项：逻辑 / 渲染 / 接口 / 限流
 ```
 
 四份测试分别是 `radar` 76、`client` 103、`routes` 35、`limit` 4。`radar` 的 B 段会真联网抓一轮（GitHub 匿名限额用完只提示、不算失败）。
