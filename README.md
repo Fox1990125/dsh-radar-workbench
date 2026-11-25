@@ -4,7 +4,7 @@
 >
 > A plugin/skill discovery workbench for DeepSeek Harness: real npm + GitHub numbers, plain-language advice, one-click install, and an AI that reads the README for you.
 
-当前版本 **0.8.1**（看 [CHANGELOG.md](./CHANGELOG.md)）。
+当前版本 **0.8.2**（看 [CHANGELOG.md](./CHANGELOG.md)）。
 
 ---
 

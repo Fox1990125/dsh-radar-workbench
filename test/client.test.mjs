@@ -139,6 +139,12 @@ ok('「收藏夹」显示条目', !!bag.tree && textOf(bag.tree).indexOf('p-one'
 ok('页签改名「收藏夹」，老名字撤掉', textOf(main.tree).indexOf('收藏夹') >= 0 && textOf(main.tree).indexOf('想装的') < 0, textOf(main.tree).slice(0, 200))
 ok('收藏夹顶部有「生成报告」按钮', textOf(bag.tree).indexOf('生成报告') >= 0, textOf(bag.tree).slice(0, 200))
 
+// 收藏夹里的「移出」只退收藏，不能顺手拉黑（以前借 onSkip，等于连雷达一起删了）
+const bagSrc = src.slice(src.indexOf('function BagTab'), src.indexOf('function InstalledTab'))
+ok('收藏夹「移出」走 onUnwant，不走 onSkip', bagSrc.indexOf('v.onUnwant(it.name)') >= 0 && bagSrc.indexOf('v.onSkip(it)') < 0, bagSrc.slice(0, 200))
+const unwantSrc = src.slice(src.indexOf('function onUnwant'), src.indexOf('function onInstall'))
+ok('onUnwant 只改 wanted，不碰 skipped', unwantSrc.indexOf('wanted: left') >= 0 && unwantSrc.indexOf('skipped') < 0, unwantSrc.slice(0, 240))
+
 // ---- 收藏夹报告：结论直接显示在每条下面 ----
 const bagRep = render({ 0: 'bag', 2: feed, 3: { tags: [], wanted: ['p-one'], skipped: [], reports: { 'p-one': {
   at: Date.now(), name: 'p-one', verdict: 'worth', verdictText: '值得装',
