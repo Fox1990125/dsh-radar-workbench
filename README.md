@@ -41,8 +41,8 @@ DSH 的插件生态散在两个地方：插件在 npm，技能在 GitHub。名�
 # 从本仓库目录装（link 方式，改代码立即生效）
 dsh plugin --profile desktop add "<本仓库绝对路径>"
 
-# 或从 GitHub 装
-dsh plugin --profile desktop add "github:<你的用户名>/dsh-radar-workbench#<commit>"
+# 或从 GitHub 装（固定到已测过的提交，不会因为以后改动而装坏）
+dsh plugin --profile desktop add "github:Fox1990125/dsh-radar-workbench#e03bc6163e29cf3f9ce1243eccf2045aaa9424d7"
 ```
 
 装完**完全退出再打开** DSH（托盘退出，不是关窗口）——宿主侧代码只有重启才加载。
